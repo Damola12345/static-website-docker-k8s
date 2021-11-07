@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: website-pod
+  labels:
+    name: website-pod
+    app: website-app
+spec:
+  containers:
+  - name: website
+    image: damola12345/website:v1
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80

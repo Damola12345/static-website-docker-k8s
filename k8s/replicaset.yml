@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: website-rs
+  labels:
+    app: website-app
+spec:
+  selector:
+    matchLabels:
+      app: website-app
+  replicas: 4
+  template:
+    metadata:
+      name: website-pod
+      labels:
+        name: website-pod
+        app: website-app
+    spec:
+      containers:
+      - name: website
+        image: damola12345/website:v1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 80
